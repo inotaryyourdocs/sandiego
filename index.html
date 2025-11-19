@@ -120,9 +120,7 @@
       They are commissioned by the <a href="https://www.sos.ca.gov" target="_blank">California 
       Secretary of State</a> and are authorized to perform notarial acts on 
       legal documents like real estate deeds, powers of attorney, and living trusts.
-    <img src="notary.jpeg" 
-       alt="Your Photo" 
-       style="width:120px; height:120px; border-radius:60px; object-fit:cover; float:right; margin:0 0 10px 20px;" />
+    
     </p>
      <p>
       I am a certified and commissioned Notary Public providing quality service
@@ -133,6 +131,9 @@
     <p><strong>Phone:</strong> (760) 403-0486</p>
     <p><strong>Email:</strong> inotaryyourdocs@gmail.com</p>
     <p><strong>Credentials:</strong> State Commissioned Notary • Bonded • Insured</p>
+    <img src="notary.jpeg" 
+       alt="Your Photo" 
+       style="width:120px; height:120px; border-radius:60px; object-fit:cover; float:right; margin:0 0 10px 20px;" />
   </div>
 
   <div class="section" id="hours">
@@ -146,10 +147,20 @@
 
   <div class="section" id="contact">
     <h2>Contact Form</h2>
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
+    <form
+      action="https://formspree.io/f/xpwbpbko"
+      method="POST"
+      >
+      <label>
+        <input type="text" name="name" placeholder="Your Name" required />
+      </label>
+      <label>
+        <input type="email" name="email" placeholder="Your Email" required />
+      </label>
+      <label>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </label>
     </form>
   </div>
 
