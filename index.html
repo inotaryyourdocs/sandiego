@@ -35,17 +35,37 @@
       text-decoration: none;
       font-weight: bold;
     }
-    @media (max-width: 500px) {
+      
     nav {
-    gap: 8px; /* smaller spacing */
+    background: #333;
     padding: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* smaller spacing */
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     }
 
     nav a {
-    font-size: 12px;   /* smaller text */
-    padding: 2px 4px;  /* reduce clickable area */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    }
+
+    @media (max-width: 500px) {
+      nav {
+        gap: 8px;
+        padding: 2px 4px;
+      }
+      nav a {
+        font-size: 12px;
+        padding: 2px 4px;
       }
     }
+    
+
     
     .hero {
       position: relative;
@@ -99,13 +119,46 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
+    .bottom-bar {
+      postion: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      z-index: 200;
+    }
+
+    .bottom-bar a {
+      flex: 1;
+      text-align: center;
+      padding: 14px 0;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px
+    }
+
+    .bottom-bar .call-btn {
+      background: #1a1a1a;
+    }
+
+    .bottom-bar .email-btn {
+      background: #C5B358;
+    }
+
+    
+    
+    
     footer {
       text-align: center;
       padding: 20px;
       margin-top: 40px;
       background: #1a1a1a;
       color: white;
+      padding-bottom: 80px;
     }
+    
     .cta-bar {
       text-align: center;
       background-color: #C5B358; /* bright, attention-grabbing */
@@ -138,7 +191,7 @@
   </header>
 
   <nav>
-    <a href="#home">Home</a>
+    
     <a href="#availability">Availability</a>
     <a href="#about">About</a>
     <a href="#hours">Hours</a>
@@ -242,5 +295,12 @@
   <footer>
     <p>© 2025 iNotary Your Docs. All Rights Reserved.</p>
   </footer>
+
+  <div class="bottom-bar">
+    <a href="tel:+17604030486" class="call-btn">📞 Call Now</a>
+    <a href="mailto:inotaryyourdocs@gmail.com" class="email-btn">✉️ Email</a>
+  </div>
+    
+  
 </body>
 </html>
