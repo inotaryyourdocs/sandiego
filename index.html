@@ -12,49 +12,118 @@
       background: #f5f5f5;
       color: #333;
     }
-    header {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 2px;
-      text-align: center;
-      margin-bottom: 0px;
-    }
-    header a {
-      color: inherit;
-      text-decoration: none;
-    }
-      
-    nav {
-    background: #333;
-    padding: 8px;
-    display: flex;
-    justify-content: center;
-    gap: 8px; /* smaller spacing */
-    white-space: nowrap;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+
+    /* ===== TOP BAR (replaces header + old nav) ===== */
+    .topbar {
+      background: linear-gradient(135deg, #1f2937, #111827); /* smooth, easy-on-the-eyes dark slate */
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      color: white;
+      font-weight: bold;
+      font-size: 17px;
+      white-space: nowrap;
+    }
+
+    /* Hamburger button — 3 smooth rounded lines */
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      padding: 8px;
+    }
+
+    .menu-toggle span {
+      width: 26px;
+      height: 3px;
+      background: white;
+      border-radius: 4px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* animate into an X when menu is open */
+    .menu-toggle.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Dropdown menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      background: #1f2937;
+      display: flex;
+      flex-direction: column;
+      min-width: 200px;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+
+    .dropdown-menu.show {
+      max-height: 400px; /* enough to fit all links */
+    }
+
+    .dropdown-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 14px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(255,255,255,0.08);
     }
 
     @media (max-width: 500px) {
-      nav {
-        gap: 4px;
-        padding: 8px 4px;
+      .logo-text {
+        font-size: 14px;
       }
-      nav a {
-        font-size: 16px;
-        padding: 8px 4px;
+      .logo-img {
+        width: 32px;
+        height: 32px;
       }
     }
-    
 
-    
+    /* ===== HERO ===== */
     .hero {
       position: relative;
       text-align: center;
@@ -73,14 +142,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;  /* desktop: show whole image, since you're making it extra wide */
+      object-fit: contain;
       opacity: 0.3;
       z-index: 0;
     }
 
     @media (max-width: 500px) {
       .hero-bg {
-        object-fit: cover;   /* mobile: fill completely, crop if needed, no white gaps */
+        object-fit: cover;
       }
     }
     .section {
@@ -135,9 +204,6 @@
       background: #C5B358;
     }
 
-    
-    
-    
     footer {
       text-align: center;
       padding: 20px;
@@ -149,13 +215,13 @@
     
     .cta-bar {
       text-align: center;
-      background-color: #C5B358; /* bright, attention-grabbing */
+      background-color: #C5B358;
       padding: 12px 0;
     }
 
     .cta-bar .cta-button {
       display: inline-block;
-      background-color: #1a1a1a; /* button color */
+      background-color: #1a1a1a;
       color: white;
       text-decoration: none;
       font-weight: bold;
@@ -165,42 +231,46 @@
     }
 
     .cta-bar .cta-button:hover {
-      background-color: #333; /* hover effect */
+      background-color: #333;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>
-      <a href="https://inotaryyourdocs.github.io/sandiego">Notary Public Services</a>
-    </h1>
-    <p>Your documents, our expertise.</p>
-    <p>San Diego County</p>
-  </header>
 
-  <nav>
-    
-    <a href="#availability">Availability</a>
-    <a href="#about">About</a>
-    <a href="#hours">Hours</a>
-    <a href="#contact">Contact</a>
-    <a href="service-areas.html">Service Areas</a>
+  <nav class="topbar">
+    <a href="#" class="logo-group" onclick="scrollToTop(event)">
+      <img src="notary.jpeg" alt="Logo" class="logo-img" />
+      <span class="logo-text">Notary Public Services</span>
+    </a>
 
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="#availability" onclick="closeMenu()">Availability</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#hours" onclick="closeMenu()">Hours</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="service-areas.html" onclick="closeMenu()">Service Areas</a>
+    </div>
   </nav>
 
   <div class="cta-bar">
     <a href="#contact" class="cta-button">We come to you - Book Your Mobile Appointment Today!</a>
   </div>
 
-
   <div class="hero" id="home" style="position: relative; overflow: hidden;">
     <img src="notarybg.png" class="hero-bg" alt="" />
     <div style="position: relative; z-index: 1;">
       <img src="notary.jpeg" alt="Your Photo" />
-    <h2>Alicia Santos - Certified Notary Public</h2>
-    <p>Last-minute and same-day appointments available when possible.</p>
+      <h2>Alicia Santos - Certified Notary Public</h2>
+      <p>Last-minute and same-day appointments available when possible.</p>
     </div>
   </div>
+
   <div class="section" id="availability">
     <h2>Availability</h2>
     <p>Mobile notary services with extended hours available by appointment.</p>
@@ -226,7 +296,6 @@
       They are commissioned by the <a href="https://www.sos.ca.gov" target="_blank">California 
       Secretary of State</a> and are authorized to perform notarial acts on 
       legal documents like real estate deeds, powers of attorney, and living trusts.
-    
     </p>
      <p>
       I am a certified and commissioned Notary Public providing quality service
@@ -254,10 +323,8 @@
   <div class="section" id="contact">
     <h2>Contact Form</h2>
     <form action="https://formspree.io/f/xrbjldoe" method="POST">
-
       <input type="hidden" name="_captcha" value="true">
-    
-       <input type="text" name="_gotcha" style="position:absolute; left:-9999px;" tabindex="-1" />
+      <input type="text" name="_gotcha" style="position:absolute; left:-9999px;" tabindex="-1" />
 
       <label for="name">Your Name:</label>
       <input type="text" name="name" id="name" placeholder="Your Name" required />
@@ -268,15 +335,11 @@
       <label for="phone">Phone:</label>
       <input type="tel" name="phone" id="phone" placeholder="+1 760 403 0486" required>
 
-
       <label for="message">Your Message:</label>
       <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
       
-      
       <button type="submit">Send Message</button>
-      
       <input type="hidden" name="_redirect" value="https://inotaryyourdocs.github.io/sandiego/success.html">
-
     </form>
   </div>
 
@@ -288,7 +351,24 @@
     <a href="tel:+17604030486" class="call-btn">📞 Call Now</a>
     <a href="mailto:inotaryyourdocs@gmail.com" class="email-btn">✉️ Email</a>
   </div>
-    
-  
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('dropdownMenu').classList.toggle('show');
+      document.getElementById('menuToggle').classList.toggle('open');
+    }
+
+    function closeMenu() {
+      document.getElementById('dropdownMenu').classList.remove('show');
+      document.getElementById('menuToggle').classList.remove('open');
+    }
+
+    function scrollToTop(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      closeMenu();
+    }
+  </script>
+
 </body>
 </html>
