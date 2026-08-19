@@ -13,6 +13,10 @@
       color: #333;
     }
 
+    * {
+  box-sizing: border-box;
+    }
+
     /* ===== TOP BAR (replaces header + old nav) ===== */
     .topbar {
       background: linear-gradient(135deg, #1f2937, #111827); /* smooth, easy-on-the-eyes dark slate */
@@ -258,10 +262,15 @@
     .hero-bg {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 50%;
+
       width: 100%;
       height: 100%;
-      object-fit: contain;
+
+      object-fit: cover;
+
+      transform: translateX(-50%) scale(1.08);
+
       opacity: 0.3;
       z-index: 0;
     }
@@ -269,8 +278,191 @@
     @media (max-width: 500px) {
       .hero-bg {
         object-fit: cover;
+        transform: translateX(-50%) scale(1);
       }
     }
+
+
+    /* document services bar*/
+
+    .document-services {
+        display: flex;
+        width: 100%;
+        background: linear-gradient(135deg, #1f2937, #111827);
+        color: white;
+        margin-top: 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* fade edge for mobile swipe indicator*/
+    .document-services-wrapper {
+      position: relative;
+    }
+
+    .document-service {
+      flex: 1;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      min-height: 85px;
+      padding: 12px 15px;
+
+      box-sizing: border-box;
+
+      text-align: left;
+    }
+
+    /* Vertical separators */
+    .document-service + .document-service {
+      border-left: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* Icon */
+    .document-service-icon {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* Text */
+    .document-service-title {
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 1.25;
+      color: white;
+    }
+
+    /* =============Mobile servicesbar only================= */
+    @media (max-width: 800px) {
+      .document-services {
+        display: flex;
+
+        width: 100%;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
+      }
+
+      .document-services::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* fade at edge*/
+      .document-services-wrapper::after {
+        content:"";
+
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        width:45px;
+        height: 100%;
+
+        background: linear-gradient(
+          to right,
+          rgba(96, 165, 250, 0),
+          rgba(96, 165, 250, 0.55)
+        );
+
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      /* service items*/
+      .document-service {
+        flex: 0 0 100%;
+        min-width: 100%;
+
+        min-height: 75px;
+
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 12px;
+
+        padding: 12px 25px;
+
+        box-sizing: border-box;
+
+        scroll-snap-align: center;
+
+        border-left: none !important;
+      }
+
+      .document-service-icon {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+      }
+      /* text*/
+      .document-service-title {
+        font-size: 14px;
+        line-height: 1.25;
+      }
+        /* swipe hint*/
+      .document-service:first-child {
+        animation: serviceSwipeHint 3s ease-in-out infinite;
+      }
+    }
+    /* swipe animation*/
+    @keyframes serviceSwipeHint {
+      0% {
+        transform: translateX(0);
+      }
+      
+      15% {
+        transform: translateX(-8px);
+      }
+
+      30% {
+        transform: translateX(-18px);
+      }
+
+      42% {
+        transform: translateX(-30px);
+      }
+
+      48% {
+        transform: translateX(-30px);
+      }
+
+      60% {
+        transform: translateX(0px);
+      }
+
+      72% {
+        transform: translateX(-10px);
+      }
+
+      82% {
+        transform: translateX(0px);
+      }
+
+      90% {
+        transform: translateX(0px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* new */
     .section {
       padding: 40px 20px;
       max-width: 800px;
@@ -280,6 +472,8 @@
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+
+
     form input, form textarea {
       width: 100%;
       padding: 10px;
@@ -435,9 +629,47 @@
     <div style="position: relative; z-index: 1;">
       <img src="notary.jpeg" alt="Your Photo" />
       <h2>Alicia Santos - Certified Notary Public</h2>
-      <p>Last-minute and same-day appointments available when possible.</p>
+      <p>Your documents, our expertise.</p>
     </div>
   </div>
+
+ <!-- ===== DOCUMENT SERVICES BAR ===== -->
+
+  <div class="document-services-wrapper">
+
+    <div class="document-services">
+
+      <div class="document-service">
+        <img src="house-icon.png" alt="" class="document-service-icon">
+        <div class="document-service-title">
+          Real Estate &amp; Property Documents
+        </div>
+      </div>
+
+      <div class="document-service">
+        <img src="estate-icon.png" alt="" class="document-service-icon">
+        <div class="document-service-title">
+          Wills &amp; Estate Documents
+        </div>
+      </div>
+
+      <div class="document-service">
+        <img src="attorney-icon.png" alt="" class="document-service-icon">
+        <div class="document-service-title">
+          Power of Attorney
+        </div>
+      </div>
+
+      <div class="document-service">
+        <img src="business-icon.png" alt="" class="document-service-icon">
+        <div class="document-service-title">
+          Business &amp; Corporate Documents
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="section" id="availability">
     <h2>Availability</h2>
@@ -536,6 +768,30 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
       closeMenu();
     }
+
+
+    const servicesBar = document.querySelector('.document-services');
+    const firstService = document.querySelector('.document-service:first-child');
+
+    let userInteracted = false;
+
+    function stopServiceAnimation() {
+      if (userInteracted) return;
+
+      userInteracted = true;
+
+      firstService.style.animation = 'none';
+    }
+
+    // Stop animation when the user touches the service bar
+    servicesBar.addEventListener('touchstart', stopServiceAnimation, { passive: true });
+
+    // Stop animation when the user starts scrolling/swiping
+    servicesBar.addEventListener('pointerdown', stopServiceAnimation);
+
+    // Stop animation if they use a mouse
+    servicesBar.addEventListener('mousedown', stopServiceAnimation);
+
   </script>
 
 </body>
