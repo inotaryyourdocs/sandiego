@@ -16,10 +16,9 @@
     /* ===== TOP BAR (replaces header + old nav) ===== */
     .topbar {
       background: linear-gradient(135deg, #1f2937, #111827); /* smooth, easy-on-the-eyes dark slate */
-      padding: 20px 20px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 200;
@@ -32,6 +31,7 @@
       gap: 10px;
       text-decoration: none;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .logo-img {
@@ -44,84 +44,203 @@
     }
 
     .logo-text {
-      color: white;
-      font-weight: bold;
-      font-size: 17px;
-      white-space: nowrap;
-    }
-
-    /* Hamburger button — 3 smooth rounded lines */
-    .menu-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 5px;
-      padding: 8px;
+      line-height: 1;
+
     }
 
-    .menu-toggle span {
-      width: 26px;
-      height: 3px;
-      background: white;
-      border-radius: 4px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+    .county-text {
+        color:#d1d5db;
+        font-size: 11px;
+        font-weight: normal;
+        margin-bottom: 3px;
+        white-space: nowrap;
     }
 
-    /* animate into an X when menu is open */
-    .menu-toggle.open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .menu-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
+    .service-text {
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+        white-space: nowrap;
     }
 
-    /* Dropdown menu */
+    /* ====Desktop Navigation====*/
     .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      right: 20px;
-      background: #1f2937;
-      display: flex;
-      flex-direction: column;
-      min-width: 200px;
-      border-radius: 0 0 10px 10px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.3s ease;
-    }
+        display: flex;
+        align-items: center;
+        gap: 5px;
 
-    .dropdown-menu.show {
-      max-height: 400px; /* enough to fit all links */
+        margin-left: auto;
+
+        position: static;
+        background: none;
+        min-width: auto;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
+        max-height: none;
+    
     }
 
     .dropdown-menu a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 14px 20px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 12px;
+        border: none;
+        border-radius: 6px;
+        white-space: nowrap;
+        transition: background 0.2s ease;
     }
-
+   
     .dropdown-menu a:hover {
-      background: rgba(255,255,255,0.08);
+        background: rgba(0, 0, 0, 0.10);
     }
 
-    @media (max-width: 500px) {
-      .logo-text {
-        font-size: 14px;
-      }
-      .logo-img {
-        width: 32px;
-        height: 32px;
-      }
+    /*hide hamburger on desktop */
+    .menu-toggle {
+        display: none;
     }
+
+    /*========MOBILE=====*/
+    @media (max-width: 800px) {
+
+        .topbar {
+            padding: 14px 20px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .service-text {
+            font-size: 15px;
+
+        }
+
+        .county-text {
+            font-size: 10px;
+        }
+
+        /* show hamburger */
+
+        .menu-toggle {
+            margin-left: auto;
+
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            width: 26px;
+            height: 3px;
+
+            background: white;
+            border-radius: 4px;
+
+            transition:
+                transform 0.3s ease,
+                opacity 0.3s ease;
+        }
+
+        /* =====hamburger to X ==== */
+
+        .menu-toggle.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* mobile dropdown */
+        .dropdown-menu {
+            position: absolute;
+
+            top: 100%;
+            right: 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+            width: 220px;
+            min-width: 220px;
+
+            margin-left: 0;
+
+            background: #1f2937;
+
+            border-radius: 0 0 10px 10px;
+
+            box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+
+            overflow: hidden;
+
+                /*
+                Start closed.
+                This allows the max-height animation to work.
+                */
+            max-height: 0;
+
+            opacity: 0;
+
+            transition:
+                max-height 0.35s ease,
+                opacity 0.25s ease;
+
+        }
+
+        .dropdown-menu.show {
+            max-height: 400px;
+            opacity: 1;
+
+        }
+
+        /* mobile menu links */
+
+        .dropdown-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+
+            padding: 14px 20px;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 0;
+
+            transition: background 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+    }
+
+    
 
     /* ===== HERO ===== */
     .hero {
@@ -216,23 +335,68 @@
     .cta-bar {
       text-align: center;
       background-color: #c2b69d;
-      padding: 12px 0;
+      padding: 7px 0;
     }
 
     .cta-bar .cta-button {
+      position: relative;
       display: inline-block;
-      background-color: #1a1a1a;
+      overflow: hidden;
+
+      background: #1a1a1a;
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 12px 20px;
+      padding: 6px 20px;
       border-radius: 6px;
-      transition: background-color 0.3s ease;
+
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+
+    /* Keeps the text above the shine */
+      isolation: isolate;
+    }
+
+    /* Moving light reflection */
+    .cta-bar .cta-button::after {
+      content: "";
+      position: absolute;
+
+      top: -50%;
+      left: -75%;
+
+      width: 45%;
+      height: 200%;
+
+      background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.25),
+          transparent
+        );
+
+      transform: skewX(-20deg);
+
+      animation: ctaShine 7.5s ease-in-out infinite;
+
+      z-index: -1;
+    }
+
+    @keyframes ctaShine {
+      0% {
+          left: -75%;
+      }
+
+      45%,
+      100% {
+          left: 125%;
+      }
     }
 
     .cta-bar .cta-button:hover {
-      background-color: #333;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
     }
+    
   </style>
 </head>
 <body>
@@ -240,7 +404,11 @@
   <nav class="topbar">
     <a href="#" class="logo-group" onclick="scrollToTop(event)">
       <img src="notary.jpeg" alt="Logo" class="logo-img" />
-      <span class="logo-text">Notary Public Services</span>
+      
+      <div class="logo-text">
+        <span class="county-text"> San Diego County</span>
+        <span class="service-text">Notary Public Services</span>
+      </div>  
     </a>
 
     <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle menu">
@@ -293,7 +461,7 @@
       A California notary public is a state-appointed official who serves as an
       impartial witness to deter fraud by verifying the identity of signers and
       ensuring they are signing documents willingly.
-      They are commissioned by the <a href="https://www.sos.ca.gov" target="_blank">California 
+      They are commissioned by the <a href="https://www.sos.ca.gov" target="_blank" rel="noopener noreferrer">California 
       Secretary of State</a> and are authorized to perform notarial acts on 
       legal documents like real estate deeds, powers of attorney, and living trusts.
     </p>
@@ -344,7 +512,7 @@
   </div>
 
   <footer>
-    <p>© 2025 iNotary Your Docs. All Rights Reserved.</p>
+    <p>© 2025 iNotaryYourDocs. All Rights Reserved.</p>
   </footer>
 
   <div class="bottom-bar">
