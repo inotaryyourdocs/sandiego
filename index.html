@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family:  arial, sans-serif;
       background: #f5f5f5;
       color: #333;
     }
@@ -774,23 +774,80 @@
     const firstService = document.querySelector('.document-service:first-child');
 
     let userInteracted = false;
+    let autoScrollInterval;
+    let currentService = 0;
 
-    function stopServiceAnimation() {
+    const totalServices = document.querySelectorAll('.document-service').length;
+
+    /* Stop all automatic movement after human interaction */
+    function stopServiceAutomation() {
       if (userInteracted) return;
 
       userInteracted = true;
 
+      /* Stop the bounce */
       firstService.style.animation = 'none';
+
+      /* Stop auto scrolling */
+      clearInterval(autoScrollInterval);
     }
 
-    // Stop animation when the user touches the service bar
-    servicesBar.addEventListener('touchstart', stopServiceAnimation, { passive: true });
 
-    // Stop animation when the user starts scrolling/swiping
-    servicesBar.addEventListener('pointerdown', stopServiceAnimation);
+    /* Automatically move to the next service */
+    function startAutoScroll() {
 
-    // Stop animation if they use a mouse
-    servicesBar.addEventListener('mousedown', stopServiceAnimation);
+      autoScrollInterval = setInterval(() => {
+
+        if (userInteracted) return;
+
+        currentService++;
+
+        /* Go back to the first service after the last */
+        if (currentService >= totalServices) {
+          currentService = 0;
+        }
+
+        servicesBar.scrollTo({
+          left: servicesBar.clientWidth * currentService,
+          behavior: 'smooth'
+        });
+
+      }, 4000);
+
+    }
+
+
+    /* Human interaction stops automation */
+
+    /* Touching the service bar */
+    servicesBar.addEventListener(
+      'touchstart',
+      stopServiceAutomation,
+      { passive: true }
+    );
+
+    /* Mouse interaction */
+    servicesBar.addEventListener(
+      'mousedown',
+      stopServiceAutomation
+    );
+
+    /* Pointer interaction */
+    servicesBar.addEventListener(
+      'pointerdown',
+      stopServiceAutomation
+    );
+
+    /* Mouse wheel / trackpad interaction */
+    servicesBar.addEventListener(
+      'wheel',
+      stopServiceAutomation,
+      { passive: true }
+    );
+
+
+    /* Start automatic scrolling */
+    startAutoScroll();
 
   </script>
 
