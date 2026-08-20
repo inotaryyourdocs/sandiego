@@ -299,6 +299,39 @@
       }
     }
 
+    .hero-cta {
+      display: inline-block;
+
+      margin-top: 12px;
+      padding: 12px 24px;
+
+      background: transparent;
+
+      color: #1a1a1a;
+      text-decoration: none;
+      font-weight: bold;
+
+      border: 2px solid #1a1a1a;
+      border-radius: 30px;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease, 
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+
+      background: rgba(255, 255, 255, 0.12);
+
+      border-color: #1a1a1a;
+
+      box-shadow:
+        0 0px 15px rgba(255, 255, 255, 0.18);
+    }
 
     /* document services bar*/
 
@@ -728,16 +761,17 @@
     </div>
   </nav>
 
-  <div class="cta-bar">
-    <a href="#contact" class="cta-button">We come to you - Book Your Mobile Appointment Today!</a>
-  </div>
-
   <div class="hero" id="home" style="position: relative; overflow: hidden;">
     <img src="notarybg.png" class="hero-bg" alt="" />
     <div style="position: relative; z-index: 1;">
       <img src="notary.jpeg" alt="Your Photo" />
+
       <h2>Alicia Santos - Certified Notary Public</h2>
+
       <p>Your documents, our expertise.</p>
+
+      <a href="#contact" class="hero-cta">Book Your Mobile Appointment</a>
+
     </div>
   </div>
 
