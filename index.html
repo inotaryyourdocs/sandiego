@@ -137,6 +137,7 @@
 
         .county-text {
             font-size: 10px;
+            color: #e8e8e8;
         }
 
         /* show hamburger */
@@ -160,7 +161,14 @@
             width: 26px;
             height: 3px;
 
-            background: white;
+            background: linear-gradient(
+
+              135deg,
+            #ffffff,
+            #eef1f4,
+            #dfe4e8,
+            #f8fafc
+              );
             border-radius: 4px;
 
             transition:
@@ -520,7 +528,19 @@
     }
 
     .bottom-bar .email-btn {
-      background: #c2b69d;
+      background: linear-gradient(
+        135deg,
+        #ffffff,
+        #eef1f4,
+        #dfe4e8,
+        #f8fafc
+      );
+      color: #1f2937;
+      position: relative;
+    }
+
+    .bottom-bar .email-btn::first-letter {
+      color: #1f2937;
     }
 
 
@@ -560,7 +580,14 @@
     
     .cta-bar {
       text-align: center;
-      background-color: #c2b69d;
+
+      background: linear-gradient(
+        135deg,
+        #ffffff,
+        #eef1f4,
+        #dfe4e8,
+        #f8fafc
+      );
       padding: 3px 0;
     }
 
