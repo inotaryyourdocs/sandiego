@@ -19,7 +19,7 @@
     }
 
     * {
-  box-sizing: border-box;
+    box-sizing: border-box;
     }
 
     /* ===== TOP BAR (replaces header + old nav) ===== */
@@ -365,7 +365,11 @@
         0 0px 15px rgba(255, 255, 255, 0.18);
     }
 
-    /* document services bar*/
+    /* =========================================================================
+    ===========================================================================
+    document services bar==================================================
+    =============================================================================
+    ============================================================================*/
 
     .document-services {
         display: flex;
@@ -549,48 +553,89 @@
     ===================================SECTIONS=======================================
     ==================================================================================
     ================================================================================== */
+    
+    * { box-sizing: border-box; }
+
+    @property --border-angle {
+      syntax: '<angle>';
+    initial-value: 0deg;
+      inherits: false;
+    }
+
     .section {
-      position: relative;
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: 24px auto;
+    padding: 40px 30px;
 
-      width: 90%;
-      max-width: 800px;
+    background: #ffffff;
+    border-radius: 28px;   /* NEW: keep white bg off the border ring */
 
-      margin: 24px auto;
+    
+    border: 2px solid #c5ccd3;      /* static border, visible normally */
 
-      padding: 40px 30px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
 
-      background: #ffffff;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+      
 
-      border-radius: 28px;
+    isolation: isolate;
+    }
 
-      border: 2px solid transparent;
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: -2px;                 /* sits behind the section */
 
-      box-shadow:
-        0 6px 18px rgba(15, 23, 42, 0.08);
+      border-radius: 29px;
+      padding: 2px;
 
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+      background: conic-gradient(
+        from var(--border-angle),
+      #c5ccd3 0deg,
+      #c5ccd3 220deg,
+      #9da6af 240deg,
+      #cbd2d8 255deg,
+      #e3e7ea 268deg,
+      #e3e7ea 272deg,
+      #cbd2d8 285deg,
+      #9da6af 300deg,
+      #c5ccd3 320deg,
+      #c5ccd3 360deg
+      );
+
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
     }
 
     .section:hover {
       transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.15);
+    }
 
-      box-shadow:
-        0 14px 35px rgba(15, 23, 42, 0.15);
+    .section:hover::before {
+      opacity: 1;
+      animation: borderReflection 9s linear infinite;
+    }
 
-      border-color: transparent;
-
-      background:
-        linear-gradient(#ffffff, #ffffff) padding-box,
-        linear-gradient(
-          135deg,
-          #9ea7b0,
-          #ffffff,
-          #c5ccd3,
-          #ffffff,
-          #8d969f
-        ) border-box;
+    @keyframes borderReflection {
+      to {
+        --border-angle: 360deg;
+      }
     }
 
     /* =====================================================================================
