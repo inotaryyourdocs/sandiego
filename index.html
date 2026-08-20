@@ -494,6 +494,8 @@
       cursor: pointer;
     }
 
+    /* ==========bottom bar======== */
+
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -510,7 +512,7 @@
       color: white;
       font-weight: bold;
       text-decoration: none;
-      font-size: 16px
+      font-size: 13px
     }
 
     .bottom-bar .call-btn {
@@ -520,6 +522,32 @@
     .bottom-bar .email-btn {
       background: #c2b69d;
     }
+
+
+    /* Desktop: show contact form button */
+    .desktop-email {
+      display: block;
+    }
+
+    /* Desktop: hide mailto button */
+    .mobile-email {
+      display: none;
+    }
+
+    /* Mobile: switch functionality */
+    @media (max-width: 800px) {
+      .desktop-email {
+        display: none;
+      }
+
+      .mobile-email {
+        display: block;
+      }
+    }
+
+
+
+    /* new */
 
     footer {
       text-align: center;
@@ -754,7 +782,8 @@
 
   <div class="bottom-bar">
     <a href="tel:+17604030486" class="call-btn">📞 Call Now</a>
-    <a href="mailto:inotaryyourdocs@gmail.com" class="email-btn">✉️ Email</a>
+    <a href="#contact" class="email-btn desktop-email">✉️ Email</a>
+    <a href="mailto:inotaryyourdocs@gmail.com" class="email-btn mobile-email">✉️ Email</a>
   </div>
 
   <script>
