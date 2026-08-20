@@ -28,12 +28,25 @@
       padding: 20px 20px;
       display: flex;
       align-items: center;
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 200;
       box-shadow: none;
+
+      transition:
+        background 0.3s ease,
+        padding 0.3s ease,
+        box-shadow 0.3s ease,
+        backdrop-filter 0.3s ease;
+    }
+    .topbar.scrolled {
+      background: rgba(31, 41, 55, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0, 0.15);
     }
 
     .logo-group {
@@ -573,7 +586,7 @@
     border-radius: 28px;   /* NEW: keep white bg off the border ring */
 
     
-    border: 2px solid #c5ccd3;      /* static border, visible normally */
+    border: 2px solid transparent;      /* static border, visible normally */
 
     box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
 
@@ -989,7 +1002,7 @@
       closeMenu();
     }
 
-
+    const topbar = document.querySelector('.topbar');
     const servicesBar = document.querySelector('.document-services');
     const firstService = document.querySelector('.document-service:first-child');
 
@@ -998,6 +1011,16 @@
     let currentService = 0;
 
     const totalServices = document.querySelectorAll('.document-service').length;
+
+
+    function handleScroll() {
+      if (window.scrollY > 40) {
+        topbar.classList.add('scrolled');
+      } else {
+        topbar.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true }); handleScroll();
 
     /* Stop all automatic movement after human interaction */
     function stopServiceAutomation() {
