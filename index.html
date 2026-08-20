@@ -110,8 +110,12 @@
 
     /*========MOBILE=====*/
     @media (max-width: 800px) {
-
-        .topbar {
+        
+      .cta-bar .cta-button {
+        max-width: 75%;
+        padding: 3px 12px;
+      }
+      .topbar {
             padding: 14px 20px;
         }
 
@@ -385,7 +389,7 @@
         flex: 0 0 100%;
         min-width: 100%;
 
-        min-height: 75px;
+        min-height: 72px;
 
         display: flex;
         flex-direction: row;
@@ -502,7 +506,7 @@
     .bottom-bar a {
       flex: 1;
       text-align: center;
-      padding: 14px 0;
+      padding: 10px 0;
       color: white;
       font-weight: bold;
       text-decoration: none;
@@ -529,7 +533,7 @@
     .cta-bar {
       text-align: center;
       background-color: #c2b69d;
-      padding: 7px 0;
+      padding: 3px 0;
     }
 
     .cta-bar .cta-button {
@@ -541,14 +545,15 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 6px 20px;
+      font-size: 14px;
+      padding: 6px 15px;
       border-radius: 6px;
 
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 
     /* Keeps the text above the shine */
-      isolation: isolate;
-    }
+      
+    } 
 
     /* Moving light reflection */
     .cta-bar .cta-button::after {
