@@ -109,7 +109,7 @@
     }
 
     .dropdown-menu a {
-      color: #eef1f4;
+      color: #ffffff;
       text-decoration: none;
       font-weight: bold;
       padding: 10px 12px;
@@ -305,7 +305,7 @@
     }
     .hero h2,
     .hero p {
-      color: #eef1f4;
+      color: #ffffff;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
     }
     .hero img:not(.hero-bg) {
@@ -653,6 +653,302 @@
       }
     }
 
+    /*======================================================================================
+    ========================================================================================
+    ===============================pricingoptions===========================================
+    ========================================================================================
+    ======================================================================================*/
+
+    /* ================= PRICING OPTIONS ================= */
+
+    .pricing-section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .pricing-section > h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .pricing-section > p {
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .pricing-cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      position: relative;
+      flex: 1;
+      max-width: 350px;
+      padding: 35px 25px;
+
+      background: #ffffff;
+      border: 2px solid transparent;
+      border-radius: 28px;
+
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+
+      text-align: left;
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      isolation: isolate;
+
+    }
+
+    .pricing-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+
+      border-radius: 29px;
+      padding: 2px;
+
+      background: conic-gradient(
+        from var(--border-angle),
+        #c5ccd3 0deg,
+        #c5ccd3 220deg,
+        #9da6af 240deg,
+        #cbd2d8 255deg,
+        #e3e7ea 268deg,
+        #e3e7ea 272deg,
+        #cbd2d8 285deg,
+        #9da6af 300deg,
+        #c5ccd3 320deg,
+        #c5ccd3 360deg
+      );
+
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.15);
+    }
+
+    .pricing-card:hover::before {
+      opacity: 1;
+      animation: borderReflection 9s linear infinite;
+    }
+
+    .pricing-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 22px;
+      color: #1f2937;
+    }
+
+    .pricing-card .pricing-description {
+      color: #667085;
+      min-height: 48px;
+      line-height: 1.5;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 25px 0;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .pricing-features li::before {
+      content: "✓";
+      margin-right: 10px;
+      color: #1f2937;
+    }
+
+    .pricing-button {
+      display: block;
+      width: 100%;
+
+      padding: 12px 15px;
+
+      background: linear-gradient(
+        135deg,
+        #1f2937,
+        #111827
+      );
+
+      color: white;
+      text-align: center;
+      text-decoration: none;
+
+      border-radius: 8px;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .pricing-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.25);
+    }
+
+    /* Highlight the recommended card */
+
+    .pricing-card.recommended {
+      border-color: #9da6af;
+      transform: scale(1.03);
+    }
+
+    .pricing-card.recommended:hover {
+      transform: scale(1.03) translateY(-6px);
+    }
+
+    .recommended-label {
+      position: absolute;
+
+      top: -14px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      padding: 6px 16px;
+
+      background: #1f2937;
+      color: white;
+
+      border-radius: 20px;
+
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .pricing-note {
+      margin: 20px 0;
+      padding: 12px 15px;
+
+      background: linear-gradient(
+        135deg,
+        #eef1f4,
+        #dfe4e8,
+        #f8fafc
+      );
+
+      border-radius: 8px;
+
+      color: #1f2937;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .pricing-disclaimer {
+      max-width: 800px;
+      margin: 25px auto 0;
+
+      font-size: 12px;
+      line-height: 1.5;
+      color: #667085;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 800px) {
+
+      .pricing-cards-wrapper {
+        position: relative;
+        
+      }
+
+      .pricing-cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scroll-snap-type: x proximity;
+             /* NEW: aligns snap targets to the same gutter as the padding below */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+
+        gap: 16px;
+        padding: 20px 5% 20px;        /* NEW: top padding was 10px, bumped so the label has room */
+      }
+
+      .pricing-cards::-webkit-scrollbar {
+        display: none;
+      }
+
+      .pricing-card {
+        flex: 0 0 85%;
+        flex-shrink: 0;
+        max-width: 320px;
+        width: auto;
+        scroll-snap-align: start;     /* was: center */
+
+        padding: 22px 20px;
+      }
+
+      .pricing-card h3 {
+        font-size: 19px;         /* was 22px */
+        margin-bottom: 8px;      /* was 12px */
+      }
+
+      .pricing-card .pricing-description {
+        min-height: 0;           /* was 48px — only needed for row alignment, not stacked cards */
+        font-size: 14px;
+      }
+
+      .pricing-features {
+        margin: 16px 0;          /* was 25px 0 */
+      }
+
+      .pricing-features li {
+        padding: 7px 0;          /* was 10px 0 */
+        font-size: 14px;
+      }
+
+      .pricing-note {
+        margin: 14px 0;          /* was 20px 0 */
+        padding: 10px 12px;      /* was 12px 15px */
+        font-size: 13px;
+      }
+
+      .recommended-label {
+        top: -12px;
+        font-size: 11px;
+        padding: 5px 14px;
+      }
+
+      .pricing-card.recommended {
+        transform: none;
+      }
+
+      .pricing-card.recommended:hover {
+        transform: translateY(-6px);
+      }
+    }
     /* =====================================================================================
     ========================================================================================
     =================================CONTACT FORM===========================================
@@ -850,6 +1146,7 @@
       <a href="#hours" onclick="closeMenu()">Hours</a>
       <a href="#contact" onclick="closeMenu()">Contact</a>
       <a href="service-areas.html" onclick="closeMenu()">Service Areas</a>
+      <a href="#pricing" onclick="closeMneu()">Pricing</a>
     </div>
   </nav>
 
@@ -903,7 +1200,117 @@
     </div>
   </div>
 
+  <!-- ================= PRICING OPTIONS ================= -->
 
+  <section class="pricing-section" id="pricing">
+
+    <h2>Notary Services</h2>
+
+    <p>
+      Transparent pricing for convenient notarization throughout the area.
+    </p>
+    <div class="pricing-cards-wrapper">
+      <div class="pricing-cards">
+
+        <!-- LOCAL APPOINTMENT -->
+        <div class="pricing-card">
+
+          <h3>In-Office Appointment</h3>
+
+          <p class="pricing-description">
+            You come to us for a simple, professional, and convenient 
+            notarization appointment.
+          </p>
+
+          <ul class="pricing-features">
+            <li>Notarial fee: $15 per signature</li>
+            <li>In-office appointment</li>
+            <li>No travel or mileage charge</li>
+            <li>Flexible scheduling</li>
+          </ul>
+
+          <div class="pricing-note">
+            <strong>Simple, transparent pricing:</strong><br>
+            $15 per notarized signature. No travel fee or mileage charge.
+          </div>
+
+          <a href="#contact" class="pricing-button">
+            Book an Appointment
+          </a>
+
+        </div>
+
+
+        <!-- MOBILE TRAVEL -->
+        
+        <div class="pricing-card recommended">
+
+          <div class="recommended-label">
+            MOST POPULAR
+          </div>
+
+          <h3>Mobile Travel</h3>
+
+          <p class="pricing-description">
+            We travel to your preferred location for a convenient notarization appointment.
+          </p>
+
+          <ul class="pricing-features">
+            <li>Notarial fee: $15 per signature</li>
+            <li>Travel to your location</li>
+            <li>Home or office appointments</li>
+            <li>Mileage may apply</li>
+          </ul>
+
+          <div class="pricing-note">
+            <strong>Mobile service fee:</strong><br>
+            $75 where applicable
+          </div>
+
+          <a href="#contact" class="pricing-button">
+            Get a Quote
+          </a>
+
+        </div>
+
+
+        <!-- URGENT / AFTER HOURS -->
+
+        <div class="pricing-card">
+
+          <h3>Urgent & After-Hours</h3>
+
+          <p class="pricing-description">
+            Priority scheduling for last-minute, urgent, evening, or weekend appointments.
+          </p>
+
+          <ul class="pricing-features">
+            <li>Notarial fee: $15 per signature</li>
+            <li>Jail & correctional facility visits</li>
+            <li>Last-minute availability</li>
+            <li>Evening & weekend availability</li>
+          </ul>
+
+          <div class="pricing-note">
+            <strong>Mobile service fee:</strong><br>
+            $125 where applicable
+          </div>
+
+          <a href="#contact" class="pricing-button">
+            Check Availability
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+    <p class="pricing-disclaimer">
+      Notarial fees are subject to applicable California statutory fee limits.
+      Additional mobile, travel, mileage, or other service charges may apply
+      depending on the appointment.
+    </p>
+
+  </section>
 
   <div class="section" id="availability">
     <h2>Availability</h2>
@@ -1093,7 +1500,7 @@
 
     /* Start automatic scrolling */
     startAutoScroll();
-
+    
   </script>
 
 </body>
