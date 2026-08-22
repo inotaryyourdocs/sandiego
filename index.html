@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iNotaryYourDocs</title>
+  <title>Mobile Notary Public in San Diego County | iNotaryYourDocs</title>
+  <meta
+    name="description"
+    content="Professional mobile notary public services in San Diego County, including San Diego, Valley Center, Vista, Escondido, Ramona, Poway, Fallbrook, Bonsall. In-office, mobile, urgent, and after-hour notarizations available."
+    />
+    <meta
+      name="keywords"
+      content="mobile notary San Diego County, notary public Valley Center, mobile notary vista, notary bonsall, notary Ramona, notary Poway, notary Fallbrook, urgent notary, traveling notary"
+      />
+
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://inotaryyourdocs.com" />
+
 
   <style>
     /* ===============================================================================
@@ -153,7 +165,7 @@
     }
 
     /*========MOBILE=====*/
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
 
       .topbar {
             padding: 12px 20px;
@@ -307,7 +319,11 @@
       padding: 100px 20px 40px;
       overflow: hidden;
     }
-    .hero h2,
+    .hero h1 {
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
+      font-size: 25px;
+    }
     .hero p {
       color: #ffffff;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
@@ -795,7 +811,7 @@
 
     /* Mobile */
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
 
       .pricing-cards-wrapper {
         position: relative;
@@ -886,7 +902,7 @@
     max-width: 800px;
     margin: 24px auto;
     padding: 40px 30px;
-
+    scroll-margin-top: 100px;
     background: #ffffff;
     border-radius: 28px;   /* NEW: keep white bg off the border ring */
 
@@ -949,6 +965,16 @@
       opacity: 1;
       animation: borderReflection 9s linear infinite;
     }
+
+    @media (max-width: 900px){
+      .section {
+        scroll-margin-top: 85px;
+      }
+      .pricing-section {
+        scroll-margin-top: 75px;
+      }
+    }
+
 
     /* =====================================================================================
     ========================================================================================
@@ -1167,7 +1193,7 @@
       <a href="#about" onclick="closeMenu()">About</a>
       <a href="#hours" onclick="closeMenu()">Hours</a>
       <a href="#contact" onclick="closeMenu()">Contact</a>
-      <a href="service-areas.html" onclick="closeMenu()">Service Areas</a>
+      <!-- <a href="service-areas.html" onclick="closeMenu()">Service Areas</a> -->
     </div>
   </nav>
 
@@ -1176,7 +1202,7 @@
     <div style="position: relative; z-index: 2;">
       <img src="notary.jpeg" alt="Your Photo" />
 
-      <h2>Alicia Santos - Certified Notary Public</h2>
+      <h1>Alicia Santos - Certified Notary Public</h1>
 
       <p>Your documents, our expertise.</p>
 
@@ -1335,9 +1361,10 @@
 
   <div class="section" id="availability">
     <h2>Availability</h2>
-    <p>Mobile notary services with extended hours available by appointment.</p>
-    <p>Welcome last-minute and urgent notarizations when possible.</p>
-    <p>Serving all of San Diego County and surrounding areas, including:</p>
+    <p> Mobile notary public services throughout San Diego County.
+     Mobile appointments are available at homes, offices, hospitals, correctional
+     facilities, and other agreed-upon locations.</p>
+    <p>Areas we commonly service include:</p>
     <ul>
       <li>Valley Center, CA</li>
       <li>Bonsall, CA</li>
@@ -1346,7 +1373,10 @@
       <li>Poway, CA</li>
       <li>Fallbrook, CA</li>
     </ul>
-    <p><strong>Location:</strong> Valley Center, CA 92082</p>
+    <p>
+      Need a mobile notary in San Diego County? Contact us to check availability
+      for your location.
+    </p>
   </div>
 
   <div class="section" id="about">
@@ -1383,7 +1413,7 @@
   </div>
 
   <div class="section" id="contact">
-    <h2>Contact Form</h2>
+    <h2>Contact</h2>
     <form action="https://formspree.io/f/xrbjldoe" method="POST">
       <input type="hidden" name="_captcha" value="true">
       <input type="text" name="_gotcha" style="position:absolute; left:-9999px;" tabindex="-1" />
