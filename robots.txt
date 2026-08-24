@@ -1,1 +1,4 @@
+User-agent: *
+Alloww/
 
+Sitemap: https://inotaryyourdocs.com/sitemap.xml
