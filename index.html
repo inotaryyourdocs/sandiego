@@ -6,7 +6,7 @@
   <title>Mobile Notary Public in San Diego County | iNotaryYourDocs</title>
   <meta
     name="description"
-    content="Professional mobile notary public services in San Diego County, including San Diego, Valley Center, Vista, Escondido, Ramona, Poway, Fallbrook, Bonsall. In-office, mobile, urgent, and after-hour notarizations available."
+    content="Professional mobile notary public services in San Diego County, including San Diego, Valley Center, Vista, Escondido, Ramona, Poway, Fallbrook, Bonsall. In-office, mobile, urgent, and after-hours notarizations available."
     />
     <meta
       name="keywords"
@@ -1173,7 +1173,9 @@
 
   <nav class="topbar">
     <a href="#" class="logo-group" onclick="scrollToTop(event)">
-      <img src="notarylogo.png" alt="Logo" class="logo-img" />
+      <img src="notarylogo.png" 
+      alt="iNotaryYourDocs San Diego County Notary Public" 
+      class="logo-img" />
       
       <div class="logo-text">
         <span class="county-text"> San Diego County</span>
@@ -1200,7 +1202,8 @@
   <div class="hero" id="home" style="position: relative; overflow: hidden;">
     <img src="notarybg.png" class="hero-bg" alt="" />
     <div style="position: relative; z-index: 2;">
-      <img src="notary.jpeg" alt="Your Photo" />
+      <img src="notary.jpeg" 
+      alt="Alicia Santos, Certified California Notary Public" />
 
       <h1>Alicia Santos - Certified Notary Public</h1>
 
@@ -1364,12 +1367,12 @@
     <p> Mobile notary public services throughout San Diego County.
      Mobile appointments are available at homes, offices, hospitals, correctional
      facilities, and other agreed-upon locations.</p>
-    <p>Areas we commonly service include:</p>
+    <p>Areas we commonly serve include:</p>
     <ul>
       <li>Valley Center, CA</li>
       <li>Bonsall, CA</li>
       <li>Vista, CA</li>
-      <li>Ramona,CA</li>
+      <li>Ramona, CA</li>
       <li>Poway, CA</li>
       <li>Fallbrook, CA</li>
     </ul>
@@ -1398,7 +1401,7 @@
     <p><strong>Phone:</strong> (760) 403-0486</p>
     <p><strong>Email:</strong> inotaryyourdocs@gmail.com</p>
     <img src="notary.jpeg" 
-       alt="Your Photo" 
+       alt="Alicia Santos, Certified Notary Public" 
        style="width:120px; height:120px; border-radius:60px; object-fit:cover; float:right; margin:0 0 10px 20px;" />
     <p><strong>Credentials:</strong> State Commissioned Notary • Bonded • Insured</p>
   </div>
@@ -1431,7 +1434,7 @@
       <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
       
       <button type="submit">Send Message</button>
-      <input type="hidden" name="_redirect" value="https://inotaryyourdocs.github.io/sandiego/success.html">
+      <input type="hidden" name="_redirect" value="https://inotaryyourdocs.com/success.html">
     </form>
   </div>
 
@@ -1554,5 +1557,64 @@
     
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "iNotaryYourDocs",
+    "description": "Professional mobile and
+    in-office notary public services serving San Diego County.",
+    "url": "https://inotaryyourdocs.com",
+    "telephone": "+1-760-403-0486",
+    "email": "inotaryyourdocs@gmail.com",
+    "image": "notarylogo.png",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Valley Center"
+      },
+      {
+        "@type": "City",
+        "name": "Vista"
+      },
+      {
+        "@type": "City",
+        "name": "Bonsall"
+      },
+      {
+        "@type": "City",
+        "name": "Ramona"
+      },
+      {
+        "@type": "City"
+        "name": "Poway"
+      },
+      {
+        "@type": "CIty"
+        "name": "Fallbrook"
+      }
+    ],
+      "openHoursSpecification":[
+      {
+        "@type": OpeningHoursSpecification",
+        "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "14:00"
+      }
+    ]
+  }
+  </script>
 </body>
 </html>
